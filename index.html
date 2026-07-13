@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carlos Henrique | Desenvolvedor Full Stack</title>
+
+    <!-- Font Awesome (ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ====== HEADER / NAVEGAÇÃO ====== -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">CH</div>
+            <nav>
+                <a href="#sobre">Sobre</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#experiencia">Experiência</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <button id="theme-toggle" aria-label="Alternar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ====== HERO ====== -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="badge">Disponível para oportunidades</span>
+                <h1>Olá, eu sou <span class="highlight">Carlos Henrique</span></h1>
+                <h2>Engenheiro de Computação | Desenvolvedor Full Stack</h2>
+                <p>Criando soluções inteligentes com código, dados e automação.</p>
+                <div class="hero-buttons">
+                    <a href="#projetos" class="btn btn-primary">
+                        <i class="fas fa-code"></i> Ver Projetos
+                    </a>
+                    <a href="#contato" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Contato
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="avatar-placeholder">
+                    <span>CH</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SOBRE ====== -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 class="section-title">Sobre mim</h2>
+            <div class="sobre-content">
+                <p>
+                    Sou estudante de <strong>Engenharia da Computação</strong> (8º semestre) e desenvolvedor com experiência
+                    em <strong>Java, Spring Boot, React, JavaScript e Python</strong>. Apaixonado por criar soluções
+                    eficientes, também atuo com <strong>automação, dados e cybersegurança</strong>.
+                </p>
+                <p>
+                    Já trabalhei com desenvolvimento front-end, marketing digital, tradução técnica e projetos acadêmicos
+                    com foco em <strong>APIs REST, integração com banco de dados e arquitetura de software</strong>.
+                </p>
+                <div class="sobre-info">
+                    <div>
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Engenharia da Computação - FMU (8º semestre)</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-language"></i>
+                        <span>Inglês e Espanhol (Avançado)</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-pin"></i>
+                        <span>Brasil</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== HABILIDADES ====== -->
+    <section id="habilidades" class="habilidades">
+        <div class="container">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Linguagens</h3>
+                    <ul>
+                        <li>JavaScript / TypeScript</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>HTML5 & CSS3</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <ul>
+                        <li>Spring Boot / Spring AI</li>
+                        <li>APIs REST</li>
+                        <li>JWT / Autenticação</li>
+                        <li>JPA / Hibernate</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                    <ul>
+                        <li>React</li>
+                        <li>Responsividade</li>
+                        <li>WordPress</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Banco de Dados</h3>
+                    <ul>
+                        <li>PostgreSQL</li>
+                        <li>MySQL</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Ferramentas</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Linux</li>
+                        <li>Oracle Cloud (OCI)</li>
+                        <li>Power BI</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-bullhorn"></i> Outros</h3>
+                    <ul>
+                        <li>Marketing Digital</li>
+                        <li>Cybersegurança</li>
+                        <li>Hardening de Sistemas</li>
+                        <li>Tradução (EN/ES → PT)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PROJETOS ====== -->
+    <section id="projetos" class="projetos">
+        <div class="container">
+            <h2 class="section-title">Projetos</h2>
+            <div class="projects-grid">
+                <!-- Projeto 1 -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Forum Hub API</h3>
+                    <p>API REST para fórum de dúvidas com autenticação JWT, senhas criptografadas e regras de permissão.</p>
+                    <div class="project-tags">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <a href="#" class="project-link">Ver no GitHub →</a>
+                </div>
+                <!-- Projeto 2 -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-book"></i></div>
+                    <h3>LiterAlura</h3>
+                    <p>Consumo da API Gutendex para buscar livros e autores com persistência JPA/Hibernate.</p>
+                    <div class="project-tags">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <a href="#" class="project-link">Ver no GitHub →</a>
+                </div>
+                <!-- Projeto 3 -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Speed Read (em breve)</h3>
+                    <p>Leitor dinâmico com técnica RSVP, suporte a PDF e histórico de leituras.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a href="#" class="project-link">Em desenvolvimento 🚀</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== EXPERIÊNCIA ====== -->
+    <section id="experiencia" class="experiencia">
+        <div class="container">
+            <h2 class="section-title">Experiência</h2>
+            <div class="exp-list">
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <h3>Desenvolvedor Front-End (Freelancer)</h3>
+                        <span class="exp-date">2023 – Atual</span>
+                    </div>
+                    <p><strong>Workana</strong> — Desenvolvimento e manutenção de sites personalizados (HTML, CSS, JavaScript, WordPress). Projetos: Loja da Linhagem, Bellas Ofertas.</p>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <h3>Afilíado Digital & Gestor de E-commerce</h3>
+                        <span class="exp-date">Projeto Independente</span>
+                    </div>
+                    <p>Gestão de perfis (Instagram, TikTok, Facebook) e campanhas de tráfego pago. Atendimento e conversão de vendas via WhatsApp, criação e gestão de loja Shopify.</p>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <h3>Tradutor e Legendador (Freelancer)</h3>
+                        <span class="exp-date">Workana / 99Freelas</span>
+                    </div>
+                    <p>Tradução e legendagem de vídeos e textos do inglês para o português, incluindo conteúdo técnico de tecnologia e negócios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTATO ====== -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2 class="section-title">Contato</h2>
+            <p class="contato-sub">Estou disponível para novas oportunidades. Vamos conversar!</p>
+            <div class="contato-links">
+                <a href="mailto:seu-email@email.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>seu-email@email.com</span>
+                </a>
+                <a href="https://linkedin.com/in/seu-perfil" target="_blank" class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/seu-usuario" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://wa.me/5511999999999" target="_blank" class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Carlos Henrique. Feito com <i class="fas fa-heart" style="color: #ff6b6b;"></i> e código.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
