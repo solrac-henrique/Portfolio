@@ -1,269 +1,1032 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carlos Henrique | Desenvolvedor Full Stack</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Carlos Henrique - Desenvolvedor Full Stack">
+    <title>Carlos Henrique | Portfólio Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET E BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Font Awesome (ícones) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Google Fonts (Inter) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0d0d2b;
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== MESH GRADIENT BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(74, 144, 217, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(74, 144, 217, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 90% 10%, rgba(74, 144, 217, 0.20) 0%, transparent 50%);
+            background-size: 200% 200%;
+            animation: meshGradient 15s ease infinite;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        @keyframes meshGradient {
+            0% {
+                background-position: 0% 0%, 100% 100%, 50% 50%, 100% 0%;
+            }
+            50% {
+                background-position: 100% 100%, 0% 0%, 100% 50%, 0% 100%;
+            }
+            100% {
+                background-position: 0% 0%, 100% 100%, 50% 50%, 100% 0%;
+            }
+        }
+
+        /* ===== DOT MATRIX ===== */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(74, 144, 217, 0.25) 1px, transparent 1px),
+                radial-gradient(circle, rgba(74, 144, 217, 0.12) 1px, transparent 1px),
+                radial-gradient(circle, rgba(74, 144, 217, 0.18) 1px, transparent 1px);
+            background-size: 
+                80px 80px,
+                120px 120px,
+                150px 150px;
+            background-position: 
+                0 0,
+                40px 40px,
+                75px 75px;
+            animation: dotShift 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes dotShift {
+            0% {
+                background-position: 
+                    0 0,
+                    40px 40px,
+                    75px 75px;
+            }
+            100% {
+                background-position: 
+                    80px 80px,
+                    120px 120px,
+                    150px 150px;
+            }
+        }
+
+        /* ===== LOADING SCREEN ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0d0d2b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .loading-icon {
+            width: 80px;
+            height: 80px;
+            animation: floatLoading 3s ease-in-out infinite;
+        }
+
+        @keyframes floatLoading {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .loading-text {
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(74, 144, 217, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4a90d9, #6c63ff, #4a90d9);
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: progressAnimation 2s ease-in-out;
+        }
+
+        @keyframes progressAnimation {
+            0% { width: 0%; opacity: 0.5; }
+            50% { width: 70%; opacity: 1; }
+            100% { width: 95%; opacity: 0.8; }
+        }
+
+        .loading-subtext {
+            font-size: 13px;
+            color: #a8a8a8;
+            margin-top: 10px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+        }
+
+        /* ===== LANGUAGE SELECTOR ===== */
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            color: #b0b0b0;
+            border: 1px solid transparent;
+        }
+
+        .language-item:hover {
+            color: #4a90d9;
+            border-color: rgba(74, 144, 217, 0.3);
+        }
+
+        .language-item.active {
+            color: #4a90d9;
+            background: rgba(74, 144, 217, 0.1);
+            border-color: #4a90d9;
+            box-shadow: 0 0 15px rgba(74, 144, 217, 0.2);
+        }
+
+        .flag {
+            font-size: 18px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 70px;
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a2a4e, #1a1a3e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 35px;
+            border: 2px solid #4a90d9;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 0 30px #4a90d9,
+                0 0 60px rgba(74, 144, 217, 0.4),
+                inset 0 0 30px rgba(74, 144, 217, 0.15);
+            animation: floatProfile 3s ease-in-out infinite;
+        }
+
+        @keyframes floatProfile {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .profile-photo .initials {
+            font-size: 70px;
+            font-weight: 700;
+            color: #4a90d9;
+            background: linear-gradient(135deg, #4a90d9, #6c63ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-name {
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff, #4a90d9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-description {
+            font-size: 15px;
+            color: #c0c0c0;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            margin-bottom: 25px;
+        }
+
+        .profile-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(74, 144, 217, 0.1);
+            border: 1px solid rgba(74, 144, 217, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #4a90d9;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-badge i {
+            font-size: 14px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: linear-gradient(135deg, rgba(45, 45, 80, 0.5), rgba(30, 30, 60, 0.7));
+            border: 1px solid rgba(74, 144, 217, 0.15);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-text {
+            font-size: 14px;
+            color: #d0d0d0;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .about-highlight {
+            color: #4a90d9;
+            font-weight: 600;
+        }
+
+        /* ===== CTA BOX ===== */
+        .cta-box {
+            width: 100%;
+            align-self: stretch;
+            margin-top: 0;
+            background: linear-gradient(135deg, rgba(45, 45, 80, 0.6), rgba(30, 30, 60, 0.8));
+            border-radius: 14px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(74, 144, 217, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(74, 144, 217, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .cta-box:hover {
+            border-color: #4a90d9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(74, 144, 217, 0.3), inset 0 0 30px rgba(74, 144, 217, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .cta-box:hover::before {
+            opacity: 1;
+        }
+
+        .cta-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+            min-width: 0;
+        }
+
+        .cta-icon {
+            font-size: 22px;
+            color: #4a90d9;
+            min-width: 30px;
+            text-align: center;
+            transition: all 0.35s;
+        }
+
+        .cta-text {
+            font-size: 13px;
+            color: #d0d0d0;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            line-height: 1.4;
+        }
+
+        .cta-arrow {
+            font-size: 16px;
+            color: #666666;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-box:hover .cta-icon {
+            transform: scale(1.1) rotate(6deg);
+        }
+
+        .cta-box:hover .cta-arrow {
+            color: #4a90d9;
+            transform: translateX(4px);
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #4a90d9;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            margin-top: 30px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #4a90d9, transparent);
+        }
+
+        /* ===== CONTACT BOX ===== */
+        .contact-section {
+            margin-bottom: 50px;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, rgba(45, 45, 80, 0.6), rgba(30, 30, 60, 0.8));
+            border-radius: 14px;
+            padding: 24px 28px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(74, 144, 217, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(74, 144, 217, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .contact-box:hover {
+            border-color: #4a90d9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(74, 144, 217, 0.3), inset 0 0 30px rgba(74, 144, 217, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .contact-box:hover::before {
+            opacity: 1;
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            color: #4a90d9;
+            min-width: 45px;
+            text-align: center;
+            transition: all 0.35s;
+        }
+
+        .contact-box:hover .contact-icon {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-detail {
+            font-size: 13px;
+            color: #a8a8a8;
+            font-weight: 400;
+        }
+
+        .contact-arrow {
+            font-size: 18px;
+            color: #666666;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-box:hover .contact-arrow {
+            color: #4a90d9;
+            transform: translateX(6px);
+        }
+
+        /* ===== SOCIAL GRID ===== */
+        .social-section {
+            margin-bottom: 60px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .social-box {
+            background: linear-gradient(135deg, rgba(45, 45, 80, 0.6), rgba(30, 30, 60, 0.8));
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(74, 144, 217, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            min-height: 150px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .social-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(74, 144, 217, 0.15), transparent);
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .social-box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 144, 217, 0.1) 0%, transparent 70%);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+
+        .social-box:hover {
+            border-color: #4a90d9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(74, 144, 217, 0.3), inset 0 0 30px rgba(74, 144, 217, 0.05);
+            transform: translateY(-6px);
+        }
+
+        .social-box:hover::before {
+            opacity: 1;
+        }
+
+        .social-box:hover::after {
+            top: -25%;
+            right: -25%;
+            opacity: 1;
+        }
+
+        .social-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-icon {
+            font-size: 36px;
+            color: #4a90d9;
+            margin-right: 14px;
+            transition: all 0.35s;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .social-box:hover .social-icon {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        .social-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .social-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 5px;
+            letter-spacing: 0.3px;
+        }
+
+        .social-description {
+            font-size: 12px;
+            color: #a8a8a8;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .social-arrow {
+            font-size: 16px;
+            color: #666666;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-left: auto;
+        }
+
+        .social-box:hover .social-arrow {
+            color: #4a90d9;
+            transform: translateX(4px);
+        }
+
+        /* ===== ANIMAÇÕES DE ENTRADA ===== */
+        .language-selector {
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        .container > * {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .header { animation-delay: 0.1s; }
+        .about-section { animation-delay: 0.15s; }
+        .cta-box { animation-delay: 0.2s; }
+        .contact-section { animation-delay: 0.25s; }
+        .social-section { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d0d2b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a90d9;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6c63ff;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 640px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                max-width: 100%;
+            }
+            .header {
+                margin-bottom: 50px;
+            }
+            .profile-photo {
+                width: 130px;
+                height: 130px;
+            }
+            .user-name {
+                font-size: 32px;
+            }
+            .user-description {
+                font-size: 14px;
+            }
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .social-box {
+                min-height: 130px;
+            }
+            .contact-box {
+                padding: 20px 22px;
+            }
+            .section-title::before,
+            .section-title::after {
+                display: none;
+            }
+            .section-title {
+                margin-bottom: 20px;
+            }
+            .about-section {
+                padding: 24px;
+            }
+            .cta-box {
+                padding: 16px 18px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- ====== HEADER / NAVEGAÇÃO ====== -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">CH</div>
-            <nav>
-                <a href="#sobre">Sobre</a>
-                <a href="#habilidades">Habilidades</a>
-                <a href="#projetos">Projetos</a>
-                <a href="#experiencia">Experiência</a>
-                <a href="#contato">Contato</a>
-            </nav>
-            <button id="theme-toggle" aria-label="Alternar tema">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- ====== HERO ====== -->
-    <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <span class="badge">Disponível para oportunidades</span>
-                <h1>Olá, eu sou <span class="highlight">Carlos Henrique</span></h1>
-                <h2>Engenheiro de Computação | Desenvolvedor Full Stack</h2>
-                <p>Criando soluções inteligentes com código, dados e automação.</p>
-                <div class="hero-buttons">
-                    <a href="#projetos" class="btn btn-primary">
-                        <i class="fas fa-code"></i> Ver Projetos
-                    </a>
-                    <a href="#contato" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i> Contato
-                    </a>
-                </div>
+    <!-- ===== LOADING SCREEN ===== -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-icon">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="60" height="60" rx="8" stroke="#4a90d9" stroke-width="3" fill="none"/>
+                    <rect x="20" y="20" width="40" height="10" rx="2" fill="#4a90d9"/>
+                    <rect x="20" y="35" width="30" height="10" rx="2" fill="#6c63ff"/>
+                    <rect x="20" y="50" width="40" height="10" rx="2" fill="#4a90d9"/>
+                    <circle cx="55" cy="25" r="4" fill="#0d0d2b" stroke="#4a90d9" stroke-width="2"/>
+                    <circle cx="55" cy="55" r="4" fill="#0d0d2b" stroke="#6c63ff" stroke-width="2"/>
+                </svg>
             </div>
-            <div class="hero-image">
-                <div class="avatar-placeholder" style="background: linear-gradient(135deg, #4a90d9, #6c63ff);">
-                    <span>CH</span>
-                </div>
+            <div class="loading-text">Carregando portfólio</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- ====== SOBRE ====== -->
-    <section id="sobre" class="sobre">
-        <div class="container">
-            <h2 class="section-title">Sobre mim</h2>
-            <div class="sobre-content">
-                <p>
-                    Sou estudante de <strong>Engenharia da Computação</strong> (8º semestre) e desenvolvedor com experiência
-                    em <strong>Java, Spring Boot, React, JavaScript e Python</strong>. Apaixonado por criar soluções
-                    eficientes, também atuo com <strong>automação, dados e cybersegurança</strong>.
-                </p>
-                <p>
-                    Já trabalhei com desenvolvimento front-end, marketing digital, tradução técnica e projetos acadêmicos
-                    com foco em <strong>APIs REST, integração com banco de dados e arquitetura de software</strong>.
-                </p>
-                <div class="sobre-info">
-                    <div>
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Engenharia da Computação - FMU (8º semestre)</span>
-                    </div>
-                    <div>
-                        <i class="fas fa-language"></i>
-                        <span>Inglês e Espanhol (Avançado)</span>
-                    </div>
-                    <div>
-                        <i class="fas fa-map-pin"></i>
-                        <span>Brasil</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== HABILIDADES ====== -->
-    <section id="habilidades" class="habilidades">
-        <div class="container">
-            <h2 class="section-title">Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Linguagens</h3>
-                    <ul>
-                        <li>JavaScript / TypeScript</li>
-                        <li>Java</li>
-                        <li>Python</li>
-                        <li>HTML5 & CSS3</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-server"></i> Backend</h3>
-                    <ul>
-                        <li>Spring Boot / Spring AI</li>
-                        <li>APIs REST</li>
-                        <li>JWT / Autenticação</li>
-                        <li>JPA / Hibernate</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-                    <ul>
-                        <li>React</li>
-                        <li>Responsividade</li>
-                        <li>WordPress</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Banco de Dados</h3>
-                    <ul>
-                        <li>PostgreSQL</li>
-                        <li>MySQL</li>
-                        <li>SQL</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Ferramentas</h3>
-                    <ul>
-                        <li>Git & GitHub</li>
-                        <li>Linux</li>
-                        <li>Oracle Cloud (OCI)</li>
-                        <li>Power BI</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-bullhorn"></i> Outros</h3>
-                    <ul>
-                        <li>Marketing Digital</li>
-                        <li>Cybersegurança</li>
-                        <li>Hardening de Sistemas</li>
-                        <li>Tradução (EN/ES → PT)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== PROJETOS ====== -->
-    <section id="projetos" class="projetos">
-        <div class="container">
-            <h2 class="section-title">Projetos</h2>
-            <div class="projects-grid">
-                <!-- Projeto 1 -->
-                <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-comments"></i></div>
-                    <h3>Forum Hub API</h3>
-                    <p>API REST para fórum de dúvidas com autenticação JWT, senhas criptografadas e regras de permissão.</p>
-                    <div class="project-tags">
-                        <span>Java</span>
-                        <span>Spring Boot</span>
-                        <span>PostgreSQL</span>
-                    </div>
-                    <a href="#" class="project-link">Ver no GitHub →</a>
-                </div>
-                <!-- Projeto 2 -->
-                <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-book"></i></div>
-                    <h3>LiterAlura</h3>
-                    <p>Consumo da API Gutendex para buscar livros e autores com persistência JPA/Hibernate.</p>
-                    <div class="project-tags">
-                        <span>Java</span>
-                        <span>Spring Boot</span>
-                        <span>PostgreSQL</span>
-                    </div>
-                    <a href="#" class="project-link">Ver no GitHub →</a>
-                </div>
-                <!-- Projeto 3 -->
-                <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Speed Read (em breve)</h3>
-                    <p>Leitor dinâmico com técnica RSVP, suporte a PDF e histórico de leituras.</p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <a href="#" class="project-link">Em desenvolvimento 🚀</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== EXPERIÊNCIA ====== -->
-    <section id="experiencia" class="experiencia">
-        <div class="container">
-            <h2 class="section-title">Experiência</h2>
-            <div class="exp-list">
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <h3>Desenvolvedor Front-End (Freelancer)</h3>
-                        <span class="exp-date">2023 – Atual</span>
-                    </div>
-                    <p><strong>Workana</strong> — Desenvolvimento e manutenção de sites personalizados (HTML, CSS, JavaScript, WordPress). Projetos: Loja da Linhagem, Bellas Ofertas.</p>
-                </div>
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <h3>Afilíado Digital & Gestor de E-commerce</h3>
-                        <span class="exp-date">Projeto Independente</span>
-                    </div>
-                    <p>Gestão de perfis (Instagram, TikTok, Facebook) e campanhas de tráfego pago. Atendimento e conversão de vendas via WhatsApp, criação e gestão de loja Shopify.</p>
-                </div>
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <h3>Tradutor e Legendador (Freelancer)</h3>
-                        <span class="exp-date">Workana / 99Freelas</span>
-                    </div>
-                    <p>Tradução e legendagem de vídeos e textos do inglês para o português, incluindo conteúdo técnico de tecnologia e negócios.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== CONTATO ====== -->
-<section id="contato" class="contato">
-    <div class="container">
-        <h2 class="section-title">Contato</h2>
-        <p class="contato-sub">Estou disponível para novas oportunidades. Vamos conversar!</p>
-        <div class="contato-links">
-            <!-- SEU E-MAIL -->
-            <a href="mailto:ch08082003@gmail.com" class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>ch08082003@gmail.com</span>
-            </a>
-            <!-- SEU LINKEDIN -->
-            <a href="https://www.linkedin.com/in/carlos-henrique-07b047218/" target="_blank" class="contact-item">
-                <i class="fab fa-linkedin"></i>
-                <span>LinkedIn</span>
-            </a>
-            <!-- SEU GITHUB -->
-            <a href="https://github.com/solrac-henrique" target="_blank" class="contact-item">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
-            </a>
-            <!-- SEU WHATSAPP -->
-            <a href="https://wa.me/5511983243356" target="_blank" class="contact-item">
-                <i class="fab fa-whatsapp"></i>
-                <span>WhatsApp</span>
-            </a>
+            <div class="loading-subtext">Seja bem-vindo ao meu perfil!</div>
         </div>
     </div>
-</section>
 
-
-    <!-- ====== FOOTER ====== -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Carlos Henrique. Feito com <i class="fas fa-heart" style="color: #ff6b6b;"></i> e código.</p>
+    <div class="container">
+        <!-- ===== LANGUAGE SELECTOR ===== -->
+        <div class="language-selector">
+            <div class="language-item" data-lang="pt">
+                <span class="flag">🇧🇷</span>
+                <span>PORTUGUÊS</span>
+            </div>
+            <div class="language-item" data-lang="en">
+                <span class="flag">🇺🇸</span>
+                <span>ENGLISH</span>
+            </div>
+            <div class="language-item" data-lang="es">
+                <span class="flag">🇪🇸</span>
+                <span>ESPAÑOL</span>
+            </div>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <div class="profile-photo">
+                <span class="initials">CH</span>
+            </div>
+            <h1 class="user-name">Carlos Henrique</h1>
+            <p class="user-description" data-i18n="title">Engenheiro de Computação | Desenvolvedor Full Stack</p>
+            <div class="profile-badge">
+                <i class="fas fa-circle"></i>
+                <span data-i18n="badge">Disponível para oportunidades</span>
+            </div>
+        </div>
+
+        <!-- ===== ABOUT ===== -->
+        <div class="about-section">
+            <p class="about-text" data-i18n="about">
+                Estudante de <span class="about-highlight">Engenharia da Computação</span> (8º semestre) e desenvolvedor com experiência em 
+                <span class="about-highlight">Java, Spring Boot, React, JavaScript e Python</span>. Apaixonado por criar soluções eficientes, 
+                também atuo com <span class="about-highlight">automação, dados e cybersegurança</span>.
+            </p>
+        </div>
+
+        <!-- ===== CTA ===== -->
+        <a class="cta-box" href="https://github.com/solrac-henrique" target="_blank">
+            <div class="cta-content">
+                <div class="cta-icon" aria-hidden="true">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="cta-text" data-i18n="cta-text">Confira meus projetos no GitHub</div>
+            </div>
+            <div class="cta-arrow" aria-hidden="true">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </a>
+
+        <!-- ===== CONTATO ===== -->
+        <div class="contact-section">
+            <div class="section-title" data-i18n="contact-title">Contato</div>
+            <a href="mailto:ch08082003@gmail.com" class="contact-box">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-title" data-i18n="email-label">ENVIAR EMAIL</div>
+                    <div class="contact-detail">ch08082003@gmail.com</div>
+                </div>
+                <div class="contact-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- ===== REDES SOCIAIS ===== -->
+        <div class="social-section">
+            <div class="section-title" data-i18n="social-title">Redes Profissionais</div>
+            <div class="social-grid">
+                <a href="https://linkedin.com/in/carlos-henrique-07b047218/" target="_blank" class="social-box">
+                    <div class="social-content">
+                        <div class="social-icon"><i class="fab fa-linkedin"></i></div>
+                        <div class="social-info">
+                            <div class="social-title" data-i18n="linkedin-label">LINKEDIN</div>
+                            <div class="social-description" data-i18n="linkedin-desc">Conecte-se comigo</div>
+                        </div>
+                        <div class="social-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/solrac-henrique" target="_blank" class="social-box">
+                    <div class="social-content">
+                        <div class="social-icon"><i class="fab fa-github"></i></div>
+                        <div class="social-info">
+                            <div class="social-title" data-i18n="github-label">GITHUB</div>
+                            <div class="social-description" data-i18n="github-desc">Meus projetos Open Source</div>
+                        </div>
+                        <div class="social-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/5511983243356" target="_blank" class="social-box">
+                    <div class="social-content">
+                        <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="social-info">
+                            <div class="social-title" data-i18n="whatsapp-label">WHATSAPP</div>
+                            <div class="social-description" data-i18n="whatsapp-desc">Vamos conversar?</div>
+                        </div>
+                        <div class="social-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <a href="#" class="social-box">
+                    <div class="social-content">
+                        <div class="social-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="social-info">
+                            <div class="social-title" data-i18n="speedread-label">SPEED READ</div>
+                            <div class="social-description" data-i18n="speedread-desc">Leitor dinâmico (em breve)</div>
+                        </div>
+                        <div class="social-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer" style="text-align:center; margin-top:auto; padding-top:50px; font-size:12px; color:#707070; letter-spacing:0.5px; border-top:1px solid rgba(74,144,217,0.1);">
+        <p data-i18n="footer">© 2025 Carlos Henrique. Todos os direitos reservados.</p>
+    </div>
+
+    <script>
+        // ===== TRADUÇÕES =====
+        const translations = {
+            pt: {
+                'title': 'Engenheiro de Computação | Desenvolvedor Full Stack',
+                'badge': 'Disponível para oportunidades',
+                'about': 'Estudante de <span class="about-highlight">Engenharia da Computação</span> (8º semestre) e desenvolvedor com experiência em <span class="about-highlight">Java, Spring Boot, React, JavaScript e Python</span>. Apaixonado por criar soluções eficientes, também atuo com <span class="about-highlight">automação, dados e cybersegurança</span>.',
+                'cta-text': 'Confira meus projetos no GitHub',
+                'contact-title': 'Contato',
+                'email-label': 'ENVIAR EMAIL',
+                'social-title': 'Redes Profissionais',
+                'linkedin-label': 'LINKEDIN',
+                'linkedin-desc': 'Conecte-se comigo',
+                'github-label': 'GITHUB',
+                'github-desc': 'Meus projetos Open Source',
+                'whatsapp-label': 'WHATSAPP',
+                'whatsapp-desc': 'Vamos conversar?',
+                'speedread-label': 'SPEED READ',
+                'speedread-desc': 'Leitor dinâmico (em breve)',
+                'footer': '© 2025 Carlos Henrique. Todos os direitos reservados.'
+            },
+            en: {
+                'title': 'Computer Engineering | Full Stack Developer',
+                'badge': 'Open to opportunities',
+                'about': 'Computer Engineering student (8th semester) and developer with experience in <span class="about-highlight">Java, Spring Boot, React, JavaScript and Python</span>. Passionate about creating efficient solutions, I also work with <span class="about-highlight">automation, data and cybersecurity</span>.',
+                'cta-text': 'Check out my projects on GitHub',
+                'contact-title': 'Contact',
+                'email-label': 'SEND EMAIL',
+                'social-title': 'Professional Networks',
+                'linkedin-label': 'LINKEDIN',
+                'linkedin-desc': 'Connect with me',
+                'github-label': 'GITHUB',
+                'github-desc': 'My Open Source projects',
+                'whatsapp-label': 'WHATSAPP',
+                'whatsapp-desc': 'Let\'s talk?',
+                'speedread-label': 'SPEED READ',
+                'speedread-desc': 'Dynamic reader (coming soon)',
+                'footer': '© 2025 Carlos Henrique. All rights reserved.'
+            },
+            es: {
+                'title': 'Ingeniería en Computación | Desarrollador Full Stack',
+                'badge': 'Disponible para oportunidades',
+                'about': 'Estudiante de <span class="about-highlight">Ingeniería en Computación</span> (8º semestre) y desarrollador con experiencia en <span class="about-highlight">Java, Spring Boot, React, JavaScript y Python</span>. Apasionado por crear soluciones eficientes, también trabajo con <span class="about-highlight">automatización, datos y ciberseguridad</span>.',
+                'cta-text': 'Mira mis proyectos en GitHub',
+                'contact-title': 'Contacto',
+                'email-label': 'ENVIAR CORREO',
+                'social-title': 'Redes Profesionales',
+                'linkedin-label': 'LINKEDIN',
+                'linkedin-desc': 'Conéctate conmigo',
+                'github-label': 'GITHUB',
+                'github-desc': 'Mis proyectos Open Source',
+                'whatsapp-label': 'WHATSAPP',
+                'whatsapp-desc': '¿Conversamos?',
+                'speedread-label': 'SPEED READ',
+                'speedread-desc': 'Lector dinámico (próximamente)',
+                'footer': '© 2025 Carlos Henrique. Todos los derechos reservados.'
+            }
+        };
+
+        // ===== FUNÇÃO DE IDIOMA =====
+        function setLanguage(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'en' ? 'en-US' : 'es-ES';
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    const isHTML = key === 'about';
+                    if (isHTML) {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        // ===== SELETOR DE IDIOMA =====
+        document.querySelectorAll('.language-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                document.querySelectorAll('.language-item').forEach(li => li.classList.remove('active'));
+                this.classList.add('active');
+                setLanguage(lang);
+            });
+        });
+
+        // ===== CARREGAR IDIOMA SALVO =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'pt';
+            const langElement = document.querySelector(`[data-lang="${savedLanguage}"]`);
+            if (langElement) {
+                langElement.click();
+            }
+        });
+
+        // ===== LOADING SCREEN =====
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 2000);
+        });
+
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+                loadingScreen.classList.add('hidden');
+            }
+        }, 4000);
+
+        // ===== OBSERVER PARA ANIMAÇÃO =====
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.social-box, .contact-box, .cta-box').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
