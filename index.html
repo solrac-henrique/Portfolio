@@ -140,9 +140,18 @@
             gap: 30px;
         }
 
-        .loading-icon {
-            width: 80px;
-            height: 80px;
+        .loading-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a90d9, #6c63ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: 0 0 40px rgba(74, 144, 217, 0.4);
             animation: floatLoading 3s ease-in-out infinite;
         }
 
@@ -169,16 +178,17 @@
 
         .progress-fill {
             height: 100%;
+            width: 0%;
             background: linear-gradient(90deg, #4a90d9, #6c63ff, #4a90d9);
             background-size: 200% 100%;
             border-radius: 2px;
-            animation: progressAnimation 2s ease-in-out;
+            animation: progressAnimation 2.5s ease-in-out forwards;
         }
 
         @keyframes progressAnimation {
             0% { width: 0%; opacity: 0.5; }
             50% { width: 70%; opacity: 1; }
-            100% { width: 95%; opacity: 0.8; }
+            100% { width: 100%; opacity: 0.9; }
         }
 
         .loading-subtext {
@@ -238,7 +248,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 70px;
+            margin-bottom: 50px;
             text-align: center;
         }
 
@@ -338,96 +348,6 @@
             font-weight: 600;
         }
 
-        /* ===== CTA BOX ===== */
-        .cta-box {
-            width: 100%;
-            align-self: stretch;
-            margin-top: 0;
-            background: linear-gradient(135deg, rgba(45, 45, 80, 0.6), rgba(30, 30, 60, 0.8));
-            border-radius: 14px;
-            padding: 18px 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(74, 144, 217, 0.15);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(74, 144, 217, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.35s;
-        }
-
-        .cta-box:hover {
-            border-color: #4a90d9;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(74, 144, 217, 0.3), inset 0 0 30px rgba(74, 144, 217, 0.05);
-            transform: translateY(-4px);
-        }
-
-        .cta-box:hover::before {
-            opacity: 1;
-        }
-
-        .cta-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            z-index: 1;
-            min-width: 0;
-        }
-
-        .cta-icon {
-            font-size: 22px;
-            color: #4a90d9;
-            min-width: 30px;
-            text-align: center;
-            transition: all 0.35s;
-        }
-
-        .cta-text {
-            font-size: 13px;
-            color: #d0d0d0;
-            font-weight: 500;
-            letter-spacing: 0.2px;
-            line-height: 1.4;
-        }
-
-        .cta-arrow {
-            font-size: 16px;
-            color: #666666;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-box:hover .cta-icon {
-            transform: scale(1.1) rotate(6deg);
-        }
-
-        .cta-box:hover .cta-arrow {
-            color: #4a90d9;
-            transform: translateX(4px);
-        }
-
         /* ===== SECTION TITLE ===== */
         .section-title {
             font-size: 11px;
@@ -453,9 +373,132 @@
             background: linear-gradient(90deg, transparent, #4a90d9, transparent);
         }
 
+        /* ===== SKILLS GRID ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .skill-box {
+            background: linear-gradient(135deg, rgba(45, 45, 80, 0.5), rgba(30, 30, 60, 0.7));
+            border: 1px solid rgba(74, 144, 217, 0.15);
+            border-radius: 14px;
+            padding: 18px 22px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .skill-box:hover {
+            border-color: #4a90d9;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(74, 144, 217, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 24px;
+            color: #4a90d9;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .skill-info {
+            flex: 1;
+        }
+
+        .skill-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 3px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .skill-tags span {
+            font-size: 10px;
+            color: #a8a8a8;
+            background: rgba(74, 144, 217, 0.1);
+            padding: 2px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 144, 217, 0.1);
+        }
+
+        /* ===== PROJECTS GRID ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+
+        .project-box {
+            background: linear-gradient(135deg, rgba(45, 45, 80, 0.5), rgba(30, 30, 60, 0.7));
+            border: 1px solid rgba(74, 144, 217, 0.15);
+            border-radius: 14px;
+            padding: 24px 22px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-box:hover {
+            border-color: #4a90d9;
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(74, 144, 217, 0.2);
+        }
+
+        .project-icon {
+            font-size: 28px;
+            color: #4a90d9;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: #a8a8a8;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .project-tags span {
+            font-size: 10px;
+            color: #4a90d9;
+            background: rgba(74, 144, 217, 0.1);
+            padding: 3px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 144, 217, 0.15);
+        }
+
         /* ===== CONTACT BOX ===== */
         .contact-section {
             margin-bottom: 50px;
+            margin-top: 20px;
         }
 
         .contact-box {
@@ -545,6 +588,7 @@
         /* ===== SOCIAL GRID ===== */
         .social-section {
             margin-bottom: 60px;
+            margin-top: 10px;
         }
 
         .social-grid {
@@ -565,7 +609,7 @@
             border: 1px solid rgba(74, 144, 217, 0.15);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
-            min-height: 150px;
+            min-height: 130px;
             position: relative;
             overflow: hidden;
             text-decoration: none;
@@ -621,7 +665,7 @@
         }
 
         .social-icon {
-            font-size: 36px;
+            font-size: 32px;
             color: #4a90d9;
             margin-right: 14px;
             transition: all 0.35s;
@@ -665,7 +709,7 @@
             transform: translateX(4px);
         }
 
-        /* ===== ANIMAÇÕES DE ENTRADA ===== */
+        /* ===== ANIMAÇÕES ===== */
         .language-selector {
             animation: slideInDown 0.6s ease-out;
         }
@@ -676,9 +720,10 @@
 
         .header { animation-delay: 0.1s; }
         .about-section { animation-delay: 0.15s; }
-        .cta-box { animation-delay: 0.2s; }
-        .contact-section { animation-delay: 0.25s; }
-        .social-section { animation-delay: 0.3s; }
+        .skills-section { animation-delay: 0.2s; }
+        .projects-section { animation-delay: 0.25s; }
+        .contact-section { animation-delay: 0.3s; }
+        .social-section { animation-delay: 0.35s; }
 
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -714,7 +759,7 @@
                 max-width: 100%;
             }
             .header {
-                margin-bottom: 50px;
+                margin-bottom: 40px;
             }
             .profile-photo {
                 width: 130px;
@@ -726,12 +771,18 @@
             .user-description {
                 font-size: 14px;
             }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
             .social-grid {
                 grid-template-columns: 1fr;
                 gap: 14px;
             }
             .social-box {
-                min-height: 130px;
+                min-height: 110px;
             }
             .contact-box {
                 padding: 20px 22px;
@@ -746,9 +797,6 @@
             .about-section {
                 padding: 24px;
             }
-            .cta-box {
-                padding: 16px 18px;
-            }
         }
     </style>
 </head>
@@ -757,16 +805,7 @@
     <!-- ===== LOADING SCREEN ===== -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
-            <div class="loading-icon">
-                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="10" y="10" width="60" height="60" rx="8" stroke="#4a90d9" stroke-width="3" fill="none"/>
-                    <rect x="20" y="20" width="40" height="10" rx="2" fill="#4a90d9"/>
-                    <rect x="20" y="35" width="30" height="10" rx="2" fill="#6c63ff"/>
-                    <rect x="20" y="50" width="40" height="10" rx="2" fill="#4a90d9"/>
-                    <circle cx="55" cy="25" r="4" fill="#0d0d2b" stroke="#4a90d9" stroke-width="2"/>
-                    <circle cx="55" cy="55" r="4" fill="#0d0d2b" stroke="#6c63ff" stroke-width="2"/>
-                </svg>
-            </div>
+            <div class="loading-avatar">CH</div>
             <div class="loading-text">Carregando portfólio</div>
             <div class="progress-bar">
                 <div class="progress-fill"></div>
@@ -778,17 +817,13 @@
     <div class="container">
         <!-- ===== LANGUAGE SELECTOR ===== -->
         <div class="language-selector">
-            <div class="language-item" data-lang="pt">
+            <div class="language-item active" data-lang="pt">
                 <span class="flag">🇧🇷</span>
                 <span>PORTUGUÊS</span>
             </div>
             <div class="language-item" data-lang="en">
                 <span class="flag">🇺🇸</span>
                 <span>ENGLISH</span>
-            </div>
-            <div class="language-item" data-lang="es">
-                <span class="flag">🇪🇸</span>
-                <span>ESPAÑOL</span>
             </div>
         </div>
 
@@ -814,18 +849,101 @@
             </p>
         </div>
 
-        <!-- ===== CTA ===== -->
-        <a class="cta-box" href="https://github.com/solrac-henrique" target="_blank">
-            <div class="cta-content">
-                <div class="cta-icon" aria-hidden="true">
-                    <i class="fas fa-code"></i>
+        <!-- ===== SKILLS ===== -->
+        <div class="skills-section">
+            <div class="section-title" data-i18n="skills-title">Habilidades</div>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skill-lang">Linguagens</div>
+                        <div class="skill-tags">
+                            <span>Java</span>
+                            <span>JS/TS</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="cta-text" data-i18n="cta-text">Confira meus projetos no GitHub</div>
+                <div class="skill-box">
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skill-backend">Backend</div>
+                        <div class="skill-tags">
+                            <span>Spring Boot</span>
+                            <span>APIs REST</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skill-frontend">Frontend</div>
+                        <div class="skill-tags">
+                            <span>React</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skill-db">Banco de Dados</div>
+                        <div class="skill-tags">
+                            <span>PostgreSQL</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon"><i class="fas fa-tools"></i></div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skill-tools">Ferramentas</div>
+                        <div class="skill-tags">
+                            <span>Git</span>
+                            <span>Linux</span>
+                            <span>OCI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="skill-info">
+                        <div class="skill-title" data-i18n="skill-other">Outros</div>
+                        <div class="skill-tags">
+                            <span>Cybersegurança</span>
+                            <span>Automação</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="cta-arrow" aria-hidden="true">
-                <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <!-- ===== PROJETOS ===== -->
+        <div class="projects-section">
+            <div class="section-title" data-i18n="projects-title">Projetos</div>
+            <div class="projects-grid">
+                <a href="https://github.com/solrac-henrique/forum-hub-api" target="_blank" class="project-box">
+                    <div class="project-icon"><i class="fas fa-comments"></i></div>
+                    <div class="project-title" data-i18n="project1-title">Forum Hub API</div>
+                    <div class="project-desc" data-i18n="project1-desc">API REST com autenticação JWT e regras de permissão</div>
+                    <div class="project-tags">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                </a>
+                <a href="https://github.com/solrac-henrique/literalura" target="_blank" class="project-box">
+                    <div class="project-icon"><i class="fas fa-book"></i></div>
+                    <div class="project-title" data-i18n="project2-title">LiterAlura</div>
+                    <div class="project-desc" data-i18n="project2-desc">Consumo da API Gutendex com persistência JPA</div>
+                    <div class="project-tags">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                </a>
             </div>
-        </a>
+        </div>
 
         <!-- ===== CONTATO ===== -->
         <div class="contact-section">
@@ -896,7 +1014,7 @@
     </div>
 
     <!-- ===== FOOTER ===== -->
-    <div class="footer" style="text-align:center; margin-top:auto; padding-top:50px; font-size:12px; color:#707070; letter-spacing:0.5px; border-top:1px solid rgba(74,144,217,0.1);">
+    <div style="text-align:center; margin-top:auto; padding-top:50px; font-size:12px; color:#707070; letter-spacing:0.5px; border-top:1px solid rgba(74,144,217,0.1); width:100%; max-width:750px;">
         <p data-i18n="footer">© 2025 Carlos Henrique. Todos os direitos reservados.</p>
     </div>
 
@@ -907,7 +1025,18 @@
                 'title': 'Engenheiro de Computação | Desenvolvedor Full Stack',
                 'badge': 'Disponível para oportunidades',
                 'about': 'Estudante de <span class="about-highlight">Engenharia da Computação</span> (8º semestre) e desenvolvedor com experiência em <span class="about-highlight">Java, Spring Boot, React, JavaScript e Python</span>. Apaixonado por criar soluções eficientes, também atuo com <span class="about-highlight">automação, dados e cybersegurança</span>.',
-                'cta-text': 'Confira meus projetos no GitHub',
+                'skills-title': 'Habilidades',
+                'skill-lang': 'Linguagens',
+                'skill-backend': 'Backend',
+                'skill-frontend': 'Frontend',
+                'skill-db': 'Banco de Dados',
+                'skill-tools': 'Ferramentas',
+                'skill-other': 'Outros',
+                'projects-title': 'Projetos',
+                'project1-title': 'Forum Hub API',
+                'project1-desc': 'API REST com autenticação JWT e regras de permissão',
+                'project2-title': 'LiterAlura',
+                'project2-desc': 'Consumo da API Gutendex com persistência JPA',
                 'contact-title': 'Contato',
                 'email-label': 'ENVIAR EMAIL',
                 'social-title': 'Redes Profissionais',
@@ -925,7 +1054,18 @@
                 'title': 'Computer Engineering | Full Stack Developer',
                 'badge': 'Open to opportunities',
                 'about': 'Computer Engineering student (8th semester) and developer with experience in <span class="about-highlight">Java, Spring Boot, React, JavaScript and Python</span>. Passionate about creating efficient solutions, I also work with <span class="about-highlight">automation, data and cybersecurity</span>.',
-                'cta-text': 'Check out my projects on GitHub',
+                'skills-title': 'Skills',
+                'skill-lang': 'Languages',
+                'skill-backend': 'Backend',
+                'skill-frontend': 'Frontend',
+                'skill-db': 'Database',
+                'skill-tools': 'Tools',
+                'skill-other': 'Others',
+                'projects-title': 'Projects',
+                'project1-title': 'Forum Hub API',
+                'project1-desc': 'REST API with JWT authentication and permission rules',
+                'project2-title': 'LiterAlura',
+                'project2-desc': 'Gutendex API consumption with JPA persistence',
                 'contact-title': 'Contact',
                 'email-label': 'SEND EMAIL',
                 'social-title': 'Professional Networks',
@@ -938,31 +1078,13 @@
                 'speedread-label': 'SPEED READ',
                 'speedread-desc': 'Dynamic reader (coming soon)',
                 'footer': '© 2025 Carlos Henrique. All rights reserved.'
-            },
-            es: {
-                'title': 'Ingeniería en Computación | Desarrollador Full Stack',
-                'badge': 'Disponible para oportunidades',
-                'about': 'Estudiante de <span class="about-highlight">Ingeniería en Computación</span> (8º semestre) y desarrollador con experiencia en <span class="about-highlight">Java, Spring Boot, React, JavaScript y Python</span>. Apasionado por crear soluciones eficientes, también trabajo con <span class="about-highlight">automatización, datos y ciberseguridad</span>.',
-                'cta-text': 'Mira mis proyectos en GitHub',
-                'contact-title': 'Contacto',
-                'email-label': 'ENVIAR CORREO',
-                'social-title': 'Redes Profesionales',
-                'linkedin-label': 'LINKEDIN',
-                'linkedin-desc': 'Conéctate conmigo',
-                'github-label': 'GITHUB',
-                'github-desc': 'Mis proyectos Open Source',
-                'whatsapp-label': 'WHATSAPP',
-                'whatsapp-desc': '¿Conversamos?',
-                'speedread-label': 'SPEED READ',
-                'speedread-desc': 'Lector dinámico (próximamente)',
-                'footer': '© 2025 Carlos Henrique. Todos los derechos reservados.'
             }
         };
 
         // ===== FUNÇÃO DE IDIOMA =====
         function setLanguage(lang) {
             localStorage.setItem('preferredLanguage', lang);
-            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'en' ? 'en-US' : 'es-ES';
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en-US';
 
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
@@ -1000,7 +1122,7 @@
         window.addEventListener('load', function() {
             setTimeout(function() {
                 document.getElementById('loadingScreen').classList.add('hidden');
-            }, 2000);
+            }, 2500);
         });
 
         setTimeout(function() {
@@ -1021,7 +1143,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.social-box, .contact-box, .cta-box').forEach(element => {
+        document.querySelectorAll('.skill-box, .project-box, .contact-box, .social-box').forEach(element => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(20px)';
             element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
